@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingolin E-Sports | FIFA, Valorant e CS2</title>
+    <meta name="author" content="Israel Jr - Criador e Desenvolvedor">
+    <meta name="description" content="Organização profissional de e-sports competindo em FIFA, Valorant e CS2. Fundada por Israel Jr, FallenMoura e Balotelli.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <style>
+        /* Reset e Variáveis Globais */
+        :root {
+            --primary: #0a0a12;  /* Preto azulado */
+            --secondary: #ffffff; /* Branco */
+            --accent: #ff2a2a;   /* Vermelho vibrante */
+            --neon: #ff2a6d;     /* Rosa neon */
+            --text: #e0e0e0;     /* Branco acinzentado */
+            --highlight: #1a1a2e; /* Roxo escuro */
+            --dark: #0d0d17;     /* Preto mais claro */
+            --glow: 0 0 10px rgba(255, 42, 42, 0.7);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 42, 42, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 42, 106, 0.1) 0%, transparent 20%);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Oxanium', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Efeito de digitação */
+        .typing-effect {
+            border-right: 3px solid var(--accent);
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent); }
+        }
+
+        /* Header Gamer */
+        header {
+            background-color: rgba(10, 10, 18, 0.9);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 5%;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--accent);
+            box-shadow: 0 2px 20px rgba(255, 42, 42, 0.2);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 40px;
+            filter: drop-shadow(var(--glow));
+        }
+
+        .logo-text {
+            font-family: 'Oxanium', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--accent), var(--neon));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(255, 42, 106, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            text-shadow: 0 0 5px var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--accent), var(--neon));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--accent);
+        }
+
+        /* Hero Section Gamer */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(10, 10, 18, 0.9), rgba(10, 10, 18, 0.7)), 
+                        url('https://images.unsplash.com/photo-1542751371-adc38448a05e') no-repeat center center/cover;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            background: linear-gradient(to right, var(--accent), var(--neon));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(255, 42, 106, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px var(--accent), 0 0 20px rgba(255, 42, 106, 0.5);
+            }
+            to {
+                text-shadow: 0 0 15px var(--accent), 0 0 30px rgba(255, 42, 106, 0.7);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--accent), var(--neon));
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 0 15px rgba(255, 42, 106, 0.5);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 42, 106, 0.7);
+        }
+
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.1) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(30deg);
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover::after {
+            left: 100%;
+        }
+
+        /* Teams Section Gamer */
+        .teams {
+            padding: 5rem 5%;
+            background-color: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .teams::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1511512578047-dfb367046420') no-repeat center center;
+            background-size: cover;
+            opacity: 0.03;
+            z-index: 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            color: var(--secondary);
+            z-index: 1;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent), var(--neon));
+        }
+
+        .games-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            z-index: 1;
+            position: relative;
+        }
+
+        .game-tab {
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--accent);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            background-color: transparent;
+            color: var(--text);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 42, 106, 0.2), transparent);
+            transition: all 0.5s;
+        }
+
+        .game-tab:hover::before {
+            left: 100%;
+        }
+
+        .game-tab.active, .game-tab:hover {
+            background-color: var(--accent);
+            color: white;
+            box-shadow: 0 0 15px rgba(255, 42, 106, 0.5);
+        }
+
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            z-index: 1;
+            position: relative;
+        }
+
+        .player-card {
+            background-color: var(--highlight);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid rgba(255, 42, 106, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .player-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 42, 106, 0.3);
+            border-color: var(--accent);
+        }
+
+        .player-image {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .player-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.8));
+            z-index: 1;
+        }
+
+        .player-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .player-card:hover .player-image img {
+            transform: scale(1.05);
+        }
+
+        .player-info {
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .player-name {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .player-role {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+            text-shadow: 0 0 5px rgba(255, 42, 106, 0.5);
+        }
+
+        .player-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .player-social a {
+            color: var(--text);
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .player-social a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+            text-shadow: 0 0 5px var(--accent);
+        }
+
+        /* Games Section Gamer */
+        .games {
+            padding: 5rem 5%;
+            background-color: var(--primary);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .games::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1543489822-c49534f0ad44') no-repeat center center;
+            background-size: cover;
+            opacity: 0.03;
+            z-index: 0;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            z-index: 1;
+            position: relative;
+        }
+
+        .game-card {
+            background-color: var(--highlight);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 42, 106, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 42, 106, 0.3);
+            border-color: var(--accent);
+        }
+
+        .game-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .game-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.8));
+            z-index: 1;
+        }
+
+        .game-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .game-card:hover .game-image img {
+            transform: scale(1.05);
+        }
+
+        .game-info {
+            padding: 1.5rem;
+        }
+
+        .game-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            text-shadow: 0 0 5px rgba(255, 42, 106, 0.5);
+        }
+
+        .game-description {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        /* About Section Gamer */
+        .about {
+            padding: 5rem 5%;
+            background-color: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1542751371-adc38448a05e') no-repeat center center;
+            background-size: cover;
+            opacity: 0.03;
+            z-index: 0;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            z-index: 1;
+            position: relative;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .founders {
+            margin-top: 2rem;
+        }
+
+        .founders-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            text-shadow: 0 0 5px rgba(255, 42, 106, 0.5);
+        }
+
+        .founders-list {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .founder {
+            background-color: var(--primary);
+            padding: 0.8rem 1.2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            border: 1px solid var(--accent);
+            transition: var(--transition);
+            box-shadow: 0 0 10px rgba(255, 42, 106, 0.2);
+        }
+
+        .founder:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 42, 106, 0.4);
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--accent);
+            transition: var(--transition);
+        }
+
+        .about-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 50px rgba(255, 42, 106, 0.3);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Partners Section Gamer */
+        .partners {
+            padding: 5rem 5%;
+            background-color: var(--primary);
+            text-align: center;
+            border-top: 1px solid var(--accent);
+            border-bottom: 1px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .partners::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1511512578047-dfb367046420') no-repeat center center;
+            background-size: cover;
+            opacity: 0.03;
+            z-index: 0;
+        }
+
+        .partners-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 3rem;
+            margin-top: 3rem;
+            z-index: 1;
+            position: relative;
+        }
+
+        .partner-logo {
+            height: 60px;
+            opacity: 0.7;
+            transition: var(--transition);
+            filter: grayscale(100%) brightness(0.8);
+        }
+
+        .partner-logo:hover {
+            opacity: 1;
+            transform: scale(1.1);
+            filter: grayscale(0%) brightness(1.1) drop-shadow(0 0 5px rgba(255, 42, 106, 0.5));
+        }
+
+        /* Footer Gamer */
+        footer {
+            background-color: var(--dark);
+            padding: 3rem 5% 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1542751371-adc38448a05e') no-repeat center center;
+            background-size: cover;
+            opacity: 0.03;
+            z-index: 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            z-index: 1;
+            position: relative;
+        }
+
+        .footer-logo {
+            font-family: 'Oxanium', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--accent), var(--neon));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(255, 42, 106, 0.5);
+        }
+
+        .footer-about {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            transition: var(--transition);
+            border: 1px solid var(--accent);
+            box-shadow: 0 0 10px rgba(255, 42, 106, 0.2);
+        }
+
+        .footer-social a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 42, 106, 0.4);
+        }
+
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            color: var(--secondary);
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(to right, var(--accent), var(--neon));
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 10px;
+            text-shadow: 0 0 5px var(--accent);
+        }
+
+        .footer-links a::before {
+            content: '>';
+            position: absolute;
+            left: -15px;
+            color: var(--accent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover::before {
+            opacity: 1;
+            left: -10px;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--accent);
+            color: #999;
+            font-size: 0.9rem;
+            z-index: 1;
+            position: relative;
+        }
+
+        /* Authenticity Badge */
+        .authenticity-badge {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(10, 10, 18, 0.9);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--accent);
+            backdrop-filter: blur(5px);
+            transition: var(--transition);
+        }
+
+        .authenticity-badge:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(255, 42, 106, 0.5);
+        }
+
+        .authenticity-badge i {
+            margin-right: 8px;
+            color: var(--neon);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: rgba(10, 10, 18, 0.95);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 3rem;
+                transition: all 0.5s ease;
+                backdrop-filter: blur(10px);
+                border-top: 1px solid var(--accent);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .player-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Authenticity Badge -->
+    <div class="authenticity-badge">
+        <i class="fas fa-code"></i>
+        <span>Criado por <strong>Israel Jr</strong></span>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <img src="LOGO DO BINGAS" alt="LOGO DO BINGAS">
+                <span class="logo-text">Bingolin E-Sports</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#">Início</a></li>
+                <li><a href="#teams">Times</a></li>
+                <li><a href="#games">Jogos</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#partners">Parceiros</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+            
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Bingolin E-Sports</h1>
+            <p class="hero-subtitle typing-effect">Competindo no mais alto nível em FIFA, Valorant e CS2</p>
+            <a href="#teams" class="cta-button">Conheça nossos times</a>
+        </div>
+    </section>
+
+    <!-- Teams Section -->
+    <section class="teams" id="teams">
+        <h2 class="section-title">NOSSOS TIMES</h2>
+        
+        <div class="games-nav">
+            <div class="game-tab active" data-game="valorant">Valorant</div>
+            <div class="game-tab" data-game="cs2">CS2</div>
+            <div class="game-tab" data-game="fifa">FIFA</div>
+        </div>
+        
+        <!-- Valorant Team -->
+        <div class="players-grid" id="valorant-team">
+            <!-- Player 1 -->
+            <div class="player-card">
+                <div class="player-image">
+                    <img src="ESPERANDO FOTO" alt="Jogador Valorant">
+                </div>
+                <div class="player-info">
+                    <h3 class="player-name">paulo "xitxit" eduardo</h3>
+                    <span class="player-role">Duelista</span>
+                    <div class="player-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitch"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Player 2 -->
+            <div class="player-card">
+                <div class="player-image">
+                    <img src="ESPERANDO FOTO" alt="Jogador Valorant">
+                </div>
+                <div class="player-info">
+                    <h3 class="player-name">Matheus "bot" moura</h3>
+                    <span class="player-role">Duelista</span>
+                    <div class="player-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitch"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Player 3 -->
+            <div class="player-card">
+                <div class="player-image">
+                    <img src="ESPERANDO FOTO" alt="Jogador Valorant">
+                </div>
+                <div class="player-info">
+                    <h3 class="player-name">leozinho "poucamira" moura</h3>
+                    <span class="player-role">Controlador</span>
+                    <div class="player-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitch"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Player 4 -->
+            <div class="player-card">
+                <div class="player-image">
+                    <img src="ESPERANDO FOTO" alt="Jogador Valorant">
+                </div>
+                <div class="player-info">
+                    <h3 class="player-name">nate "matarinu" Lima</h3>
+                    <span class="player-role"></span>
+                    <div class="player-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitch"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Player 5 -->
+            <div class="player-card">
+                <div class="player-image">
+                    <img src="ESPERANDO FOTO" alt="Jogador Valorant">
+                </div>
+                <div class="player-info">
+                    <h3 class="player-name">ze "safadinho" Costa</h3>
+                    <span class="player-role">Flex</span>
+                    <div class="player-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitch"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CS2 Team (Initially Hidden) -->
+        <div class="players-grid" id="cs2-team" style="display: none;">
+            <!-- Player 1 -->
+            <div class="player-card">
+                <div class="player-image">
+                    <img src="ESPERANDO FOTO" alt="Jogador CS2">
+                </div>
+                <div class="player-info">
+                    <h3 class="player-name">FALLENMOURA</h3>
+                    <span class="player-role">AWPer</span>
+                    <div class="player-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitch"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Player 2 -->
+            <div class="player-card">
+                <div class="player-image">
+                    <img src="ESPERANDO FOTO" alt="Jogador CS2">
+                </div>
+                <div class="player-info">
+                    <h3 class="player-name">IGOR BUCETINHA/h3>
+                    <span class="player-role">Entry Fragger</span>
+                    <div class="player-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitch"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Player 3 -->
+            <div class="player-card">
+                <div class="player-image">
+                    <img src="ESPERANDO FOTO" alt="Jogador CS2">
+                </div>
+                <div class="player-info">
+                    <h3 class="player-name">BALOTELLI MOURA</h3>
+                    <span class="player-role">IGL</span>
+                    <div class="player-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitch"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Player 4 -->
+            <div class="player-card">
+                <div class="player-image">
+                    <img src="ESPERANDO FOTO" alt="Jogador CS2">
+                </div>
+                <div class="player-info">
+                    <h3 class="player-name">Eduardo XITXIT</h3>
+                    <span class="player-role">Lurker</span>
+                    <div class="player-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitch"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Player 5 -->
+            <div class="player-card">
+                <div class="player-image">
+                    <img src="ESPERANDO FOTO" alt="Jogador CS2">
+                </div>
+                <div class="player-info">
+                    <h3 class="player-name">TRALARERO</h3>
+                    <span class="player-role">Support</span>
+                    <div class="player-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitch"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FIFA Team (Initially Hidden) -->
+        <div class="players-grid" id="fifa-team" style="display: none;">
+            <!-- Player 1 -->
+            <div class="player-card">
+                <div class="player-image">
+                    <img src="ESPERANDO FOTO" alt="Jogador FIFA">
+                </div>
+                <div class="player-info">
+                    <h3 class="player-name">GABRIEL SANTOS</h3>
+                    <span class="player-role">FIFA Pro</span>
+                    <div class="player-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitch"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Player 2 -->
+            <div class="player-card">
+                <div class="player-image">
+                    <img src="ESPERANDO FOTO" alt="Jogador FIFA">
+                </div>
+                <div class="player-info">
+                    <h3 class="player-name">FEKIPE ALBINO</h3>
+                    <span class="player-role">FIFA Pro</span>
+                    <div class="player-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitch"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Player 3 -->
+            <div class="player-card">
+                <div class="player-image">
+                    <img src="ESPERANDO FOTO" alt="Jogador FIFA">
+                </div>
+                <div class="player-info">
+                    <h3 class="player-name">JOAO VELLOSO</h3>
+                    <span class="player-role">FIFA Pro</span>
+                    <div class="player-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitch"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section class="games" id="games">
+        <h2 class="section-title">NOSSOS JOGOS</h2>
+        
+        <div class="games-grid">
+            <!-- Valorant -->
+            <div class="game-card">
+                <div class="game-image">
+                    <img src="ESPERANDO FOTO" alt="Valorant">
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">Valorant</h3>
+                    <p class="game-description">Nosso time de Valorant compete nos principais torneios nacionais e internacionais, com destaque no cenário competitivo.</p>
+                    <a href="#teams" class="cta-button" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Ver Time</a>
+                </div>
+            </div>
+            
+            <!-- CS2 -->
+            <div class="game-card">
+                <div class="game-image">
+                    <img src="ESPERANDO FOTO" alt="CS2">
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">CS2</h3>
+                    <p class="game-description">O time de CS2 da Bingolin é conhecido por suas estratégias inovadoras e jogadas agressivas que dominam os servidores.</p>
+                    <a href="#teams" class="cta-button" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Ver Time</a>
+                </div>
+            </div>
+            
+            <!-- FIFA -->
+            <div class="game-card">
+                <div class="game-image">
+                    <img src="ESPERANDO FOTO" alt="FIFA">
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">FIFA</h3>
+                    <p class="game-description">Nossos jogadores de FIFA estão entre os melhores do mundo, com títulos em competições internacionais.</p>
+                    <a href="#teams" class="cta-button" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Ver Time</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2 class="section-title">SOBRE NÓS</h2>
+                <p>Fundada em 2018, a Bingolin E-Sports é uma organização brasileira que compete nos mais altos níveis de FIFA, Valorant e CS2. Nossa missão é representar o Brasil com excelência nos cenários competitivos mundiais.</p>
+                <p>Com estrutura de ponta e uma equipe de profissionais dedicados, nossos jogadores têm todo o suporte necessário para alcançar o máximo desempenho.</p>
+                
+                <div class="founders">
+                    <h4 class="founders-title">Fundadores:</h4>
+                    <div class="founders-list">
+                        <span class="founder">Israel Jr</span>
+                        <span class="founder">FallenMoura</span>
+                        <span class="founder">Balotelli</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-image">
+                <img src="ESPERANDO FOTO" alt="FOTO DO TIME">
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners" id="partners">
+        <h2 class="section-title">NOSSOS PARCEIROS</h2>
+        
+        <div class="partners-grid">
+           AREA DE PATROCINIO
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="footer-logo">Bingolin</div>
+                <p class="footer-about">Organização profissional de e-sports competindo em FIFA, Valorant e CS2 nos maiores cenários mundiais.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitch"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col footer-links">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#teams">Times</a></li>
+                    <li><a href="#games">Jogos</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col footer-links">
+                <h3>Suporte</h3>
+                <ul>
+                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Termos</a></li>
+                    <li><a href="#">Privacidade</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col footer-links">
+                <h3>Contato</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> contato@bingolin.com</li>
+                    <li><i class="fas fa-phone"></i> +55 48 9999-9999</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Florianópolis, Brasil</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Bingolin E-Sports. Todos os direitos reservados. Fundada por Israel Jr, FallenMoura e Balotelli.</p>
+            <p style="margin-top: 0.5rem;">Desenvolvido com <i class="fas fa-heart" style="color: var(--accent);"></i> por <strong>Israel Jr</strong></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Game Tabs Functionality
+        const gameTabs = document.querySelectorAll('.game-tab');
+        const valorantTeam = document.getElementById('valorant-team');
+        const cs2Team = document.getElementById('cs2-team');
+        const fifaTeam = document.getElementById('fifa-team');
+        
+        gameTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                gameTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all teams
+                valorantTeam.style.display = 'none';
+                cs2Team.style.display = 'none';
+                fifaTeam.style.display = 'none';
+                
+                // Show selected team
+                const game = tab.getAttribute('data-game');
+                if (game === 'valorant') {
+                    valorantTeam.style.display = 'grid';
+                } else if (game === 'cs2') {
+                    cs2Team.style.display = 'grid';
+                } else if (game === 'fifa') {
+                    fifaTeam.style.display = 'grid';
+                }
+            });
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        });
+
+        // Authenticity Badge Interaction
+        const authenticityBadge = document.querySelector('.authenticity-badge');
+        authenticityBadge.addEventListener('click', () => {
+            alert("Site oficial da Bingolin E-Sports\n\nDesenvolvido por Israel Jr\n\n© 2023 Todos os direitos reservados");
+        });
+
+        // Scroll Animation
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.player-card, .game-card, .about-image, .partner-logo');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Set initial state for animation
+        document.querySelectorAll('.player-card, .game-card, .about-image, .partner-logo').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.5s ease';
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Typing Effect
+        const typingElement = document.querySelector('.typing-effect');
+        if (typingElement) {
+            setTimeout(() => {
+                typingElement.style.animation = 'none';
+                typingElement.style.borderRight = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
